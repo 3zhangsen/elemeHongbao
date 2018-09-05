@@ -24,8 +24,8 @@ MYSQL 5.5.35
 |  2  | **pwd**       | varchar(30) |      | QQ密码 |
 |  3  | **eleme_key** | char(32)    |      | 从饿了么cookie中提取出的eleme_key |
 |  4  | **openid**    | char(32)    |      | 从饿了么cookie中提取出的openid |
-|  3  | **left**      | tinyint(3)  |      | 小号今日剩余可领取次数，0-5之间的整数 |
-|  3  | **phone**     | char(11)    | √    | 该小号绑定的手机号，默认为NULL，需要后期绑定，绑定手机号去看绑定端 |
+|  5  | **left**      | tinyint(3)  |      | 小号今日剩余可领取次数，0-5之间的整数 |
+|  6  | **phone**     | char(11)    | √    | 该小号绑定的手机号，默认为NULL，需要后期绑定，绑定手机号去看绑定端 |
 
 # 饿了么红包接口
 
