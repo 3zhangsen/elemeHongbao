@@ -192,23 +192,21 @@
 		die("这个红包可能过期了或失效了！");
 	}
 
-	// 取出30个小号待命
-	// 为了尽可能避免高峰期反应过慢，所以不采用一条一条取数据，而是一次性取出30条小号
-	$result = $db -> query("
-		SELECT
-			* 
-		FROM
-			`eleme_qq` 
-		WHERE
-			`left` BETWEEN 1 AND 5 
-			AND `phone` IS NOT NULL 
-		ORDER BY
-			`left` DESC 
-			LIMIT 30;
-	");
-
 	// 抢小红包，把小红包垫刀垫完再进入大红包模式
 	while ($row = $result -> Fetch()) {
+		$result = $db -> query("
+			SELECT
+				* 
+			FROM
+				`eleme_qq` 
+			WHERE
+				`left` BETWEEN 1 AND 5 
+				AND `phone` IS NOT NULL 
+			ORDER BY
+				`left` DESC 
+				LIMIT 1;
+		");
+		$row = $result -> Fetch(); //每次取出一个小号出来
 		$s = new Xiaohao($row['eleme_key'], $row['openid']);
 		$res = $s -> getHongbao($h);
 
@@ -251,6 +249,19 @@
 
 	// 抢大红包
 	while ($row = $result -> Fetch()) {
+		$result = $db -> query("
+			SELECT
+				* 
+			FROM
+				`eleme_qq` 
+			WHERE
+				`left` BETWEEN 1 AND 5 
+				AND `phone` IS NOT NULL 
+			ORDER BY
+				`left` DESC 
+				LIMIT 1;
+		");
+		$row = $result -> Fetch(); //每次取出一个小号出来
 		$s = new Xiaohao($row['eleme_key'], $row['openid']);
 		if ($s -> changePhone($phone) === false) {
 			// 修改成目标手机号失败了，直接退出，让用户手动点链接领。
