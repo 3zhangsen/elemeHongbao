@@ -1,4 +1,4 @@
-#介绍
+# 介绍
 
 ------
 
@@ -10,7 +10,7 @@
 
 源码删去了红包领取记录等语句，以方便供大家二次开发。
 
-#环境
+# 环境
 
 ------
 
@@ -18,7 +18,7 @@ PHP 7.0（需要启用CURL）
 
 MYSQL 5.5.35
 
-#数据库设计
+# 数据库设计
 
 ------
 
@@ -33,15 +33,15 @@ MYSQL 5.5.35
 |  3  | **left**      | tinyint(3)  |      | 小号今日剩余可领取次数，0-5之间的整数 |
 |  3  | **phone**     | char(11)    | √    | 该小号绑定的手机号，默认为NULL，需要后期绑定，绑定手机号去看绑定端 |
 
-#饿了么红包接口
+# 饿了么红包接口
 
 ------
 
-##获取红包属性
+## 获取红包属性
 
 `GET` https://h5.ele.me/restapi//marketing/themes/ **[theme_id]** /group_sns/ **[sn]**
 
-##修改手机号
+## 修改手机号
 
 `PUT` https://h5.ele.me/restapi//v1/weixin/ **[openid]** /phone
 
@@ -54,7 +54,7 @@ MYSQL 5.5.35
 }
 ```
 
-##领取红包
+## 领取红包
 
 `POST` https://h5.ele.me/restapi//marketing/promotion/weixin/ **[openid]**
 
@@ -77,7 +77,7 @@ MYSQL 5.5.35
 ```
 > track_id 可以空
 
-#饿了么红包机器人
+# 饿了么红包机器人
 
 ------
 
